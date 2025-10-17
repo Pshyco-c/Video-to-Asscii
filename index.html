@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flicker</title>
+    <link rel="stylesheet" href="ascii.css"></link>
+</head>
+<body>
+    <div class="container">
+        <h1>FLICKER</h1>
+        <div class="subtitle">Transform Reality into Text</div>
+        
+        <div class="control-panel">
+            <div class="controls-grid">
+                <div class="control-group">
+                    <label for="videoInput">📁 Source File</label>
+                    <div class="file-input-wrapper">
+                        <input type="file" id="videoInput" accept="video/*">
+                        <label for="videoInput" class="file-input-label">
+                            <span id="fileLabel">Choose Video File</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    <label for="widthSlider">📐 Resolution: <span class="range-value" id="widthValue">100</span></label>
+                    <input type="range" id="widthSlider" min="50" max="200" value="100">
+                </div>
+                
+                <div class="control-group">
+                    <label for="contrastSlider">🎨 Contrast: <span class="range-value" id="contrastValue">1.2</span></label>
+                    <input type="range" id="contrastSlider" min="0.5" max="3" step="0.1" value="1.2">
+                </div>
+                
+                <div class="control-group">
+                    <label for="charSet">📝 Character Matrix</label>
+                    <select id="charSet">
+                        <option value="standard">Standard ASCII</option>
+                        <option value="detailed">High Detail</option>
+                        <option value="blocks">Block Elements</option>
+                        <option value="binary">Binary Mode</option>
+                        <option value="matrix">Matrix Rain</option>
+                    </select>
+                </div>
+                
+                <div class="control-group">
+                    <label for="colorMode">🌈 Color Protocol</label>
+                    <select id="colorMode">
+                        <option value="mono">Monochrome</option>
+                        <option value="green">Terminal Green</option>
+                        <option value="amber">Amber CRT</option>
+                        <option value="color">Full Spectrum</option>
+                        <option value="neon">Neon Glow</option>
+                    </select>
+                </div>
+
+                <div class="control-group">
+                    <label for="fpsSlider">⚡ Target FPS: <span class="range-value" id="fpsValue">30</span></label>
+                    <input type="range" id="fpsSlider" min="10" max="60" step="5" value="30">
+                </div>
+            </div>
+            
+            <div class="action-buttons">
+                <button id="playBtn" disabled>▶ ENGAGE</button>
+                <button id="pauseBtn" disabled>⏸ PAUSE</button>
+                <button id="fullscreenBtn" disabled>⛶ IMMERSE</button>
+                <button id="exportBtn" disabled>💾 EXPORT</button>
+                <button id="resetBtn">🔄 RESET</button>
+            </div>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">⚡</div>
+                <div class="stat-label">Frame Rate</div>
+                <div class="stat-value" id="fpsDisplay">0</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🎬</div>
+                <div class="stat-label">Current Frame</div>
+                <div class="stat-value" id="frameDisplay">0</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">📺</div>
+                <div class="stat-label">Resolution</div>
+                <div class="stat-value" id="resolutionDisplay">N/A</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">⏱️</div>
+                <div class="stat-label">Duration</div>
+                <div class="stat-value" id="durationDisplay">0:00</div>
+            </div>
+        </div>
+
+        <div class="display-area">
+            <div class="panel">
+              <div class="panel-header">
+                <span class="panel-indicator"></span>
+                <span class="panel-title">Source Feed</span>
+              </div>
+              <video id="videoElement" style="display: none;" crossOrigin="anonymous"></video>
+              <canvas id="canvas" style="display: none;"></canvas>
+              <div id="videoPlaceholder">Awaiting video input...</div>
+            </div>
+            
+            <div class="panel">
+                <div class="panel-header">
+                    <div class="panel-indicator"></div>
+                    <div class="panel-title">ASCII Matrix Output</div>
+                </div>
+                <pre id="asciiOutput">System ready.
+Upload video to initialize conversion matrix...</pre>
+            </div>
+        </div>
+        
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+            </div>
+            <div class="progress-text">
+                <span id="currentTime">0:00</span>
+                <span id="totalTime">0:00</span>
+            </div>
+        </div>
+        
+        <div class="fullscreen-controls" id="fullscreenControls">
+            <button id="exitFullscreenBtn">✕ EXIT</button>
+            <button id="playFsBtn">▶ PLAY</button>
+            <button id="pauseFsBtn">⏸ PAUSE</button>
+        </div>
+
+        <footer class="creator-footer">
+            <!-- <div class="footer-content">
+                <span class="creator-name">pshyco_c</span>
+                <div class="footer-line"></div>
+            </div> -->
+            <div class="copyright">
+                <span class="copyright-text">© 2025 by pshyco_c</span>
+                <span class="copyright-divider">|</span>
+                <span class="copyright-text">All rights reserved</span>
+            </div>
+        </footer>
+    </div>
+
+    <script src="ascii.js"></script>
+</body>
+</html>
